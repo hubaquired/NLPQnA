@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>QnA Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+    <form action="/answer" method="post">
+      Context:<br>
+      <textarea rows="4" cols="50" name="context">
+      </textarea><br>
+      Question:<br>
+      <input type="text" name="question"><br>
+      <input type="submit" value="Ask"><br>
+    </form>
+    Previous ans: {{ ans }}
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  </body>
+</html>
