@@ -8,6 +8,9 @@ with open('full_format_recipes.json') as json_file:
 			rname = p['title']
 			rname = rname.replace('/',' ')
 			rname = rname.replace('"',' ')
+			rname = rname.replace('  ', ' ')
+			if rname[0] == ' ':
+				rname = rname.split(' ', 1)[1]
 		except KeyError:
 			continue
 		if rname[-1] == ' ':
@@ -15,7 +18,7 @@ with open('full_format_recipes.json') as json_file:
 		print(rname)
 		with open('recipedocs/' + rname + '.txt', 'w') as newdoc:
 			#gen title line
-			newdoc.write(rname + ' recipe. ')
+			newdoc.write(rname + ' recipe.')
 
 			#remove numbered directions and combine elements for directions
 			dirs = ''
