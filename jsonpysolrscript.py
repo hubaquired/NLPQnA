@@ -23,7 +23,8 @@ with open('full_format_recipes.json') as json_file:
             rname = rname[:-1]
         print(rname)
         #gen title line
-        recipe = rname + ' recipe.'
+        #recipe = rname + ' recipe.'
+        recipe = ''
 
         #remove numbered directions and combine elements for directions
         dirs = ''
