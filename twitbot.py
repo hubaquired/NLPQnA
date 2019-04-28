@@ -4,6 +4,7 @@ import requests
 import os
 import configparser
 
+
 lastid = '0'
 replyflag = 0
 
@@ -35,8 +36,9 @@ def main():
 			continue
 
 		#Answer Text - put response and links in these variables
+
 		mentioner = mention.user.screen_name
-		answer = '451 Farenheit'
+		answer = answerQuery(mention.text)
 		link = 'https://www.youtube.com/watch?v=PV3_UHG73oQ'
 		response = "@%s %s\n%s" % (mentioner, answer, link)
 
