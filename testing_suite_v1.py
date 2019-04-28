@@ -1,5 +1,6 @@
 from ChefRamsey import answerQuery
 import nltk
+from nltk.tokenize import RegexpTokenizer
 
 questions = ["How should the celery be cut in Asian Pear Slaw?", "Can you substitute the ginger in Asian Pear Slaw?", "How long does Asian Pear Slaw take?", "How much fresh lime juice is needed in Asian Pear Slaw?", "What kind of peeler do I use for carrots in Asian Pear Slaw?", "Do you cut the celery into 1/4-inch-thick matchsticks in Asian Pear Slaw?", "Can I use any peeler in Asian Pear Slaw?", "How many Asian pears are used in Asian Pear Slaw?", "Does Asian Pear Slaw include any added sugar?", "What ingredients are in Asian Pear Slaw?", "How long does Asian Pear Slaw need to rest before serving?", "Is Asian Pear Slaw vegan?", "How much cilantro do I add to Asian Pear Slaw?", "What kind of pears should be used in Asian Pear Slaw?", "What temperature should the oven be preheated to in Bacon Crackers?", "How long should you bake Bacon Crackers?", "Why should we avoid getting sugar on the cracker in Bacon Crackers?", "How many strips of bacon do I make in Bacon Crackers?", "What are the ingredients in Bacon Crackers?", "How many slices of bacon are needed for Bacon Crackers?", "How much dark brown sugar do I use for Bacon Crackers?", "How do I make a fancified version of Bacon Crackers?", "What temperature do I preheat my gas grill in Baja Fish Tacos?", "How many flour tortillas do I need in Baja Fish Tacos?", "What type of slaw do I use for Baja Fish Tacos?", "What are the ingredients of Baja Fish Tacos?", "What fish is used in Baja Fish Tacos?", "Should I bake, fry, or grill the fish in Baja Fish Tacos?", "What spices will I need to make Baja Fish Tacos?", "What juice do I use in Baja Fish Tacos?", "How much olive oil do I need in Bahian Chicken and Shrimp Stew?", "How long do I marinate Bahian Chicken and Shrimp Stew?", "What is the special equipment for Bahian Chicken and Shrimp Stew?", "How long will it take to cook the chicken all the way through in Bahian Chicken and Shrimp Stew?", "How many calories are in Bahian Chicken and Shrimp Stew?", "How much lime juice do I use in Bahian Chicken and Shrimp Stew?", "How much salted roasted cocktail peanuts do I use in Bahian Chicken and Shrimp Stew?", "What are the ingredients in Bahian Chicken and Shrimp Stew?", "What do I heat the oven to for Banana Bread?", "How long do you bake the Banana Bread for?", "What kind of pan do I bake the Banana Bread in?"]
 
@@ -20,15 +21,15 @@ for question in questions:
     answer = answerQuery(question)
     answer = answer.lower()
     tokenized_answer = tokenizer.tokenize(answer)
-    expected_answer = tokenizer.tokenize(answers[number])
+    expected_answer = tokenizer.tokenize(answers[number].lower())
     expected_word_count = len(expected_answer)
     score = 0.0
     for word in tokenized_answer:
-        if word in expected_answer.lower():
+        if word in expected_answer:
             score += 100.0/expected_word_count
     result += score
     number += 1
 
 
 result = result/len(questions)
-print("ChefRAMsay has a result ", result, "% accuracy!")
+print("ChefRAMsay has a ", result, "% accuracy!")
