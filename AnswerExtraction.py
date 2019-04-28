@@ -7,6 +7,6 @@ def extractAnswer(query, passage):
     print('Answer:'+str(answer))
     print(num)
     print(num2)
-    return answer
+    return answer[0]
 
 

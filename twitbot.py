@@ -3,6 +3,7 @@ import tkinter
 import requests
 import os
 import configparser
+import time
 
 from ChefRamsey import answerQuery
 
@@ -78,5 +79,6 @@ def twitter_api():
 	auth.set_access_token(access_token, access_token_secret)
 	api = tweepy.API(auth)
 	return api
-
-main()
+while True:
+    main()
+    time.sleep(60)
