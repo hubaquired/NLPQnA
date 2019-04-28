@@ -4,6 +4,8 @@ import requests
 import os
 import configparser
 
+from ChefRamsey import answerQuery
+
 
 lastid = '0'
 replyflag = 0
