@@ -64,6 +64,3 @@ with open('full_format_recipes.json') as json_file:
 
 
 		print('fin')
-	 
-		
-		

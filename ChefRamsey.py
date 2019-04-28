@@ -9,3 +9,8 @@ def answerQuery(query):
 
 def best_answer(answer_list):
     return answer_list[0]
+
+def queryAnalysis(query):
+    return None
+
+
