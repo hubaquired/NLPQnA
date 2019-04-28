@@ -40,7 +40,7 @@ def main():
 		#Answer Text - put response and links in these variables
 
 		mentioner = mention.user.screen_name
-		answer = answerQuery(mention.text)[0]
+		answer = answerQuery(mention.text)
 		link = 'https://www.youtube.com/watch?v=PV3_UHG73oQ'
 		response = "@%s %s\n%s" % (mentioner, answer, link)
 
