@@ -7,19 +7,20 @@ solr_core = 'ChefRamsey'
 
 def answerQuery(query):
     flags = queryAnalysis(query)
-    passages = findPassages(query,1)
+    passages = findPassages(query,10)
     answers = []
     for passage in passages:
+        print('----------------------------------------------------------')
+        print('Query:'+str(query)+'\nPassage:'+str(passage)+'\n')
         answers.append(extractAnswer(query, passage))
+        print('----------------------------------------------------------')
     answer = best_answer(answers)
     return answer
 
-def findPassages(query, max_resp=1):
+def findPassages(query, max_resp=10):
     formatted_query = format_solr_query(query)
-    print(formatted_query)
     results = requests.get(formatted_query).json() 
     response = [i['passage'] for i in results['response']['docs']]
-    print(response[0])
     return response[0:max_resp]
 
 def format_solr_query(query):
@@ -27,7 +28,7 @@ def format_solr_query(query):
     beginning_str = 'http://localhost:8983/solr/'+solr_core+edismax_str
     query = 'q='+query+'&'
     rows = '&rows=100'
-    weight_str = 'qf=name^10 passage^1'
+    weight_str = 'qf=name^10 passage'
     new_qry = beginning_str+query+weight_str+rows
     return new_qry
 
