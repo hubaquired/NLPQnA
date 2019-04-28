@@ -41,7 +41,8 @@ def main():
 		#Answer Text - put response and links in these variables
 
 		mentioner = mention.user.screen_name
-		answer = answerQuery(mention.text)
+		query = mention.text.replace('@ChefRAMsey8', '').strip()
+		answer = answerQuery(query)
 		link = 'https://www.youtube.com/watch?v=PV3_UHG73oQ'
 		response = "@%s %s\n%s" % (mentioner, answer, link)
 
@@ -79,6 +80,7 @@ def twitter_api():
 	auth.set_access_token(access_token, access_token_secret)
 	api = tweepy.API(auth)
 	return api
+
 while True:
     main()
     time.sleep(60)
