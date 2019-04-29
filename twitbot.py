@@ -10,7 +10,7 @@ from ChefRamsey import answerQuery
 
 lastid = '0'
 replyflag = 0
-
+tweetruncount = 0
 def main():
 	api = twitter_api()
 	user = api.me()
@@ -44,10 +44,16 @@ def main():
 		query = mention.text.replace('@ChefRAMsey8', '').strip()
 		answer = answerQuery(query)
 		link = 'https://www.youtube.com/watch?v=PV3_UHG73oQ'
-		response = "@%s %s\n%s" % (mentioner, answer, link)
+		response = "@%s %s\n%d\n%s" % (mentioner, answer, tweetruncount, link)
 
 		#Options for with image attachment or without
-		api.update_status(response, in_reply_to_status_id=mention.id)
+		try:
+			api.update_status(response, in_reply_to_status_id=mention.id)
+		except tweepy.TweepError as error:
+			if error.api_code == 187:
+				print('duplicate message error')
+		#success
+		tweetruncount = tweetruncount + 1
 		#filename = 'imagetest.jpg'
 		#api.update_with_media(filename, status=response, in_reply_to_status_id=mention.id)
 
