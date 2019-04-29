@@ -44,7 +44,7 @@ def main():
 		query = mention.text.replace('@ChefRAMsey8', '').strip()
 		answer = answerQuery(query)
 		link = 'https://www.youtube.com/watch?v=PV3_UHG73oQ'
-		response = "@%s %s\n%d\n%s" % (mentioner, answer, tweetruncount, link)
+		response = "@%s %s\n\#%d\n%s" % (mentioner, answer, tweetruncount, link)
 
 		#Options for with image attachment or without
 		try:
