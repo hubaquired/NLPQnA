@@ -36,6 +36,7 @@ with open('full_format_recipes.json') as json_file:
         #remove parens
         dirs = dirs.replace('(','')
         dirs = dirs.replace('(','')
+        if 'Combine all ingredients in a cocktail shaker and shake vigorously. Strain into a cocktail glass.' in dirs: continue
         recipe = recipe + dirs + ' '
 
         #calories, protien, fat, sodium
